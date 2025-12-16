@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const userSchema = new userSchema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -8,17 +8,15 @@ const userSchema = new userSchema(
       unique: true,
       lowercase: true,
       trim: true,
-      minLength: 1,
-      maxLength: 10,
+      minlength: 1,
+      maxlength: 10,
     },
-
-    passwords: {
+    password: {
       type: String,
       required: true,
-      minLength: 6,
-      maxLength: 50,
+      minlength: 6,
+      maxlength: 50,
     },
-
     email: {
       type: String,
       required: true,
@@ -27,9 +25,7 @@ const userSchema = new userSchema(
       trim: true,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 export const User = mongoose.model("User", userSchema);
